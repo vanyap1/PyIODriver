@@ -49,6 +49,11 @@ if __name__ == '__main__':
 
         muxVal = not muxVal
         time.sleep(0.5)
+        
+        from smbus2 import SMBus, i2c_msg
+        bus = SMBus(0)
+        bus.write_i2c_block_data(0x12, 0x02,[1,2,3])
+        bus.read_i2c_block_data(0x12, 0, 1)
 """
 
 from threading import Thread
